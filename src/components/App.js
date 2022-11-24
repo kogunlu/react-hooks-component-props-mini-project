@@ -1,13 +1,25 @@
 import React from "react";
 import blogData from "../data/blog";
+import Header from './Header'
+import About from './About'
+import ArticleList from './ArticleList'
 
 console.log(blogData);
 
 function App() {
+
+  const articleElements = blogData.posts.map(item => {
+    return (
+      <ArticleList title={item.title} date={item.date} preview={item.preview} key={item.id}/>
+    )
+  })
+
   return (
     <div className="App">
-      You're on your own from here! Follow the deliverables; test things out in
-      the browser as you write your code; and good luck!
+      <Header header = {blogData.name} />
+      <About text={blogData.about} image= {blogData.image}/>
+      {articleElements}
+
     </div>
   );
 }
